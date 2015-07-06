@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>iGender | Artificial Intelligent Gender Prediction Tool | Predict Gender from Name Easily with 99.99% Accuracy | World's Number 1 Free Online Gender Prediction Tool | Online Gender Determination | Guessing Genders From Names | Gender From First Name | Gender Predictor</title>
+<meta name="description" content="Have You Ever Thought How Human Brain Determines Gender By Just Hearing or Reading Names?? This Artificial Intelligent Gender Prediction Tool can easily predict gender(male/female)from First Name">
+<meta name="keywords" content="iGender | Artificial Intelligent Gender Prediction Tool | Predict Gender from Name Easily with 99.99% Accuracy | World's Number 1 Free Online Gender Prediction Tool | Online Gender Determination | Guessing Genders From Names | Gender From First Name | Gender Predictor">
+<meta name="author" content="iGender">
+<meta charset="UTF-8">
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<style type="text/css">
+	* html #ss-box{
+	position: absolute;
+	} 
+	#ss-box{
+	width: 70px;
+	background:#ffffff;border:1px solid #dedede;border-radius:12px;-moz-border-radius:12px;	-webkit-border-radius:12px;position:fixed;left:4%;
+	top: 20%; 
+	height:200px;
+	height:auto;
+	}
+	#ss-box div{
+	padding:6px 6px 4px 5px;
+	}
+	#icon_twitter,#icon_digg{
+	margin-left:-2px;
+	}
+	#icon_linkedin{
+	margin-left:-5px;
+	}
+	#sfs{
+	margin-left:-5px;
+	}
+	#ss-get{
+		bottom: -20px;
+		clear: both;
+		color: #666666;
+		font-size: 9px;
+		left: 18px;
+		position: absolute;
+		text-align: center;
+		text-decoration: none;
+	}
+		
+	</style>
+<script>
+
+function animateScroll() 
+{
+    $('.bar').animate({
+    width: '100%'
+}, {
+    duration: 7000,
+    easing: 'linear',
+    complete:function(){ $(this).css("width","0%");
+   }
+});
+//animateScroll();
+}
+function check(data){
+return mystring.replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+}
+$(document).ready(function(){
+  $("#show_result").click(function()
+  {
+      animateScroll();
+      var name = $("#name").val();
+      if(name != "")
+      {
+	
+	    $.post("../ai",{name:$("#name").val()},
+	    function(data,status)
+	    {
+		var obj = jQuery.parseJSON(data);
+		if(obj.gender == "male")
+		{
+		  
+		  $("#prog").html('<b>'+$("#name").val()+'</b> is a <b>Male</b> Name&nbsp;&nbsp;Confidence : <b>'+obj.confidence+'%</b>');
+		  $("#calc").html("");
+		}
+		else if(obj.gender == "female"){
+                  
+		  $("#prog").html('<b>'+$("#name").val()+'</b> is a <b>Female</b> Name&nbsp;&nbsp;Confidence : <b>'+obj.confidence+'%</b>');
+		  $("#calc").html("");
+		}
+		else if(status == "500"){
+		    
+		    $("#prog").html('Something went wrong!!');
+		    $("#calc").html("");
+		}
+		else{
+		    
+		    document.getElementById('prog').innerHTML = 'Unable to predict gender!!';
+		    $("#calc").html("");
+		}
+	      });
+		
+	}
+	else {alert('Please Enter a Name');}
+});
+});
+
+$(document).ready(function(){
+  $("#modal_close").click(function(){
+    $("#prog").html('<div class="bar" style="width: 0%;"></div>');
+    $("#calc").html("<b>Guessing Gender....</b>");
+});
+});
+</script>
+</head>
+<body>
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="/demo/index.html" target="blank" data-toggle="modal">Demo</a></li>
+  <li><a href="#api" data-toggle="modal">API</a></li>
+  <li><a href="#about-us" data-toggle="modal">About Us</a></li>
+  <li><a href="#contact-us" data-toggle="modal">Query</a></li></ul>
+<div class="well span9 pagination-centered offset2">
+<h3>iGender - Artificial Intelligent Gender Prediction Tool</h3><br/>
+<p>Have You Ever Thought How Human Brain Determines Gender By Just Hearing or Reading Names??</p>
+</div>
+<div class="well span6 pagination-centered offset3"><form><label>Please Enter Name</label><input class="span5" id="name" type="text"/><br/><a href="#myResult" id="show_result" class="btn btn-success" role="button" data-toggle="modal"><i class="icon-user icon-white" ></i>Find Gender</a></form></div>
+<script type='text/javascript' src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+<!---->
+<div class="modal hide fade" id="myResult" aria-hidden="true"><div class="modal-header"><h3>iGender Result</h3></div><div class="modal-body"><p id="calc"><b>Guessing Gender....</b></p><div class="progress progress-striped active" id="prog"><div class="bar" id="progress" style="width: 0%;"></div></div></div><div class="modal-footer"><button id="modal_close" class="btn" data-dismiss="modal" aria-hidden="true">Close</button></div></div>
+<!---->
+<!---->
+<div class="modal hide fade" id="api" aria-hidden="true"><div class="modal-header"><h3>iGender API</h3></div><div class="modal-body">
+    <p style="font-family: 'Autour One', cursive;"><strong>Using iGender API :</strong></p>
+    <p style="font-family: 'Autour One', cursive;">Using iGender API is very simple. </p>
+    <p style="font-family: 'Autour One', cursive;">Send a http POST request to <b>http://www.i-gender.com/ai</b> with POST parameter <b>name=your_name_here</b></p>
+    <p style="font-family: 'Autour One', cursive;">And you should receive JSON Response like this {"gender":"male","confidence":"75"}</b></p>
+    <p style="font-family: 'Autour One', cursive;"><b>Example 1 # An Example with Python is given below : </b></p>
+    <p style="font-family: 'Autour One', cursive;"><script src="https://gist.github.com/debasishm89/34a68eb6d784a6b0835a.js"></script></p>
+    <p style="font-family: 'Autour One', cursive;">  iGender server supports CORS. So you can send request from any domain using Jquery or Javascript to access iGender API.</p>
+    <p style="font-family: 'Autour One', cursive;"><b>Example 2 # An Example With Jquery (Cross Domain Ajax)is Given Below : </b></p>
+    <script src="https://gist.github.com/debasishm89/eab7a2468e80f6dfbdfc.js"></script>
+    <p style="font-family: 'Autour One', cursive;"><b>Example 3 # Adding iGender to Any Custom Web From :</b></p><script src="https://gist.github.com/debasishm89/8a646ef3ef4ac04ccd36.js"></script>
+</div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">Close</button></div></div>
+<!---->
+<div class="modal hide fade" id="about-us" aria-hidden="true"><div class="modal-header"><h3>About Us</h3></div><div class="modal-body"><p>Necessity is the mother of all inventions. "iGender" is another example of that. iGender was created to help tele callers easily find out correct gender of confusing names.But now iGender has lot more. Using iGender API you can now easily add artificial intelligence to your Applications(Web/Desktop). Please refer to API section for more information on iGender API service.</p></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">Close</button></div></div>
+<!---->
+<div class="modal hide fade" id="contact-us" aria-hidden="true"><div class="modal-header"><h3>Contact the Developer</h3></div><div class="modal-body"><p>Email <a href="http://www.debasish.in/">Me</a> at : debasishm89@gmail.com</p></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">Close</button></div></div>
+<!---->
+<div class="modal hide fade" id="terms" aria-hidden="true"><div class="modal-header"><h3>Terms</h3></div><div class="modal-body"><p>We try our our level best to ensure the accuracy of iGender result. But unfortunately, sometimes the result you get may be is not upto the mark(When 50% Confidence Level). We are still working hard to increase the accuracy of iGender. iGender will not liability for any losses arising from the information given by iGender. If you notice any inaccuracy, please let us know –  debasishm89@gmail.com</p></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">Close</button></div></div>
+<!---->
+<div class="modal hide fade" id="privacy" aria-hidden="true"><div class="modal-header"><h3>Privacy</h3></div><div class="modal-body"><p>We save all the names for which you use iGender to determine gender.</p></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">Close</button></div></div><div id="footer" style="position:absolute;top:90%;left:42%">iGender © 2013 | <a href="#terms" data-toggle="modal">Terms</a> | <a href="#privacy" data-toggle="modal">Privacy</a> </div>
+<!--Social Widget-->
+<div id="ss-box"><div id="ssl-box"><div class='sbutton' id='gb'><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="box_count" show_faces="false" font=""></fb:like></div><div class='sbutton' id='rt'></div><div id="icon_googleplus"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><g:plusone size="tall"></g:plusone></div><div id="icon_twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div><div id="icon_digg"><script type="text/javascript">(function() {var s = document.createElement('SCRIPT'), s1 = document.getElementsByTagName('SCRIPT')[0];s.type = 'text/javascript';s.async = true;s.src = 'http://widgets.digg.com/buttons.js';s1.parentNode.insertBefore(s, s1);})();</script><a class="DiggThisButton DiggMedium"></a></div><div id="icon_linkedin"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></div></div><div style="clear:both;"></div></div>
+</body>
+</html>

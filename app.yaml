@@ -1,0 +1,19 @@
+application: maleorfemale07
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /main
+  static_dir: webUI
+- url: /demo
+  static_dir: demo
+- url: /main/css
+  static_dir: webUI/css
+- url: /main/img
+  static_dir: webUI/img
+- url: /main/js
+  static_dir: webUI/js
+- url: /.*
+  script: iGender.app
