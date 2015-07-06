@@ -34,7 +34,7 @@ class ai(webapp2.RequestHandler):
 	req.add_header('User-Agent', 'Opera/9.80 (J2ME/MIDP; Opera Mini/9.80 (J2ME/22.478; U; en) Presto/2.5.25 Version/10.54')	
 	req.add_header('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8')
 	req.add_header('Accept-Encoding', 'gzip, deflate')
-	req.add_header('Cookie', 'xs=1:V3Fys94x31w2ZQ:0:1376834917; c_user=100004468124182; ')
+	req.add_header('Cookie', 'xs=1:V3Fys94xxxxxxxxx:0:xxxxxxxx; c_user=100004xxxxxxxxx; ')
 	data = zlib.decompress(urllib2.urlopen(req).read(), 16+zlib.MAX_WBITS)
 	match = re.findall('<td class="name"><a href="/(.*?)">',data)
 	if len(match) == 0:# no result found
